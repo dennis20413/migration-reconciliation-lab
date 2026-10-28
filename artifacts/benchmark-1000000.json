@@ -1,0 +1,35 @@
+{
+  "comparison": {
+    "changed_rows": 3,
+    "field_differences": 3,
+    "matched_clean_rows": 999992,
+    "matched_rows": 999995,
+    "source_blocked_rows": 2,
+    "source_only_rows": 2,
+    "target_blocked_rows": 1,
+    "target_only_rows": 1
+  },
+  "data_quality_passed": false,
+  "dataset": "deterministic synthetic demo v1",
+  "environment": {
+    "duckdb": "1.5.6",
+    "logical_cpus": 16,
+    "machine": "AMD64",
+    "memory_limit": "256MB",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 191 Stepping 2, GenuineIntel",
+    "python": "3.11.6",
+    "threads": 1
+  },
+  "generation_seconds": 4.406339,
+  "limitations": "Single local run with synthetic uniform keys; not a production SLA or proof of bounded process RSS. DuckDB memory_limit does not cap all allocations.",
+  "measured_at_utc": "2026-10-28T10:05:49.496775+00:00",
+  "measured_scope": "CSV parse, disk-backed tables, SQL classify/join, input SHA256, CSV/JSON/HTML report export; excludes fixture generation",
+  "nominal_rows_per_side": 1000000,
+  "oracle_verified": true,
+  "peak_memory_measured": false,
+  "reconciliation_seconds": 16.603035,
+  "source_rows": 1000001,
+  "target_rows": 1000001,
+  "total_input_rows_per_second": 120460.02
+}

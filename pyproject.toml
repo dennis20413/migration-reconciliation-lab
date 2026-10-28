@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "migration-reconciliation-lab"
+version = "0.1.0"
+description = "Contract-driven CSV migration reconciliation with exact decimals and auditable SQL"
+requires-python = ">=3.11"
+dependencies = ["duckdb==1.5.6"]
+
+[project.scripts]
+migration-reconcile = "reconcile_lab.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["reconcile_lab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

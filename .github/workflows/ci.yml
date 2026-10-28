@@ -1,0 +1,38 @@
+name: Reconciliation checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python -m reconcile_lab generate-demo --out data/ci --rows 1000
+      - name: Validate the CLI's deliberate quality-failure exit
+        shell: python
+        run: |
+          import json, subprocess, sys
+          command = [sys.executable, '-m', 'reconcile_lab', 'reconcile', '--source', 'data/ci/source.csv', '--target', 'data/ci/target.csv', '--contract', 'data/ci/contract.json', '--out', 'runs/ci']
+          result = subprocess.run(command, check=False)
+          assert result.returncode == 1, result.returncode
+          with open('runs/ci/audit.json', encoding='utf-8') as stream:
+              audit = json.load(stream)
+          assert audit['comparison']['matched_rows'] == 995
+          assert audit['accounting_invariants_passed']
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audit-${{ matrix.os }}-${{ matrix.python }}
+          path: runs/ci/

@@ -1,0 +1,16 @@
+category,side,row_id,key_json,field,source_value,target_value,detail
+blocked_by_quarantine,source,5,"{""company_code"":""C001"",""invoice_id"":""00000005""}","","","",Opposing key exists but is quarantined
+blocked_by_quarantine,source,6,"{""company_code"":""C002"",""invoice_id"":""00000006""}","","","",Opposing key exists but is quarantined
+blocked_by_quarantine,target,8,"{""company_code"":""C002"",""invoice_id"":""00000008""}","","","",Opposing key exists but is quarantined
+duplicate_key,source,8,"{""company_code"":""C002"",""invoice_id"":""00000008""}","","","",All rows with an ambiguous key are quarantined
+duplicate_key,source,9,"{""company_code"":""C002"",""invoice_id"":""00000008""}","","","",All rows with an ambiguous key are quarantined
+duplicate_key,target,4,"{""company_code"":""C001"",""invoice_id"":""00000005""}","","","",All rows with an ambiguous key are quarantined
+duplicate_key,target,5,"{""company_code"":""C001"",""invoice_id"":""00000005""}","","","",All rows with an ambiguous key are quarantined
+field_difference,both,3,"{""company_code"":""C001"",""invoice_id"":""00000003""}",amount,101.11,101.13,Canonical values differ beyond declared tolerance
+field_difference,both,4,"{""company_code"":""C002"",""invoice_id"":""00000004""}",customer_name,Synthetic Customer 004,"<script>alert(""synthetic"")</script>",Canonical values differ beyond declared tolerance
+field_difference,both,13,"{""company_code"":""C002"",""invoice_id"":""00000012""}",amount,104.44,104.46,Canonical values differ beyond declared tolerance
+invalid_key,target,7,"{""company_code"":""C001"",""invoice_id"":null}","","","",Null or blank composite key component
+invalid_value,target,6,"{""company_code"":""C002"",""invoice_id"":""00000006""}",amount,"",NOT_A_DECIMAL,"Malformed, out-of-range, or excess-scale decimal; row excluded from comparison"
+source_only,source,2,"{""company_code"":""C002"",""invoice_id"":""00000002""}","","","",No comparable opposing key
+source_only,source,7,"{""company_code"":""C001"",""invoice_id"":""00000007""}","","","",No comparable opposing key
+target_only,target,1001,"{""company_code"":""C001"",""invoice_id"":""00001001""}","","","",No comparable opposing key

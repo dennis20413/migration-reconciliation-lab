@@ -1,0 +1,99 @@
+{
+  "accounting_invariants_passed": true,
+  "comparison": {
+    "changed_rows": 3,
+    "field_differences": 3,
+    "matched_clean_rows": 992,
+    "matched_rows": 995,
+    "source_blocked_rows": 2,
+    "source_only_rows": 2,
+    "target_blocked_rows": 1,
+    "target_only_rows": 1
+  },
+  "engine": {
+    "memory_limit": "256MB",
+    "name": "duckdb",
+    "threads": 1,
+    "version": "1.5.6"
+  },
+  "exception_counts": {
+    "blocked_by_quarantine": 3,
+    "duplicate_key": 4,
+    "field_difference": 3,
+    "invalid_key": 1,
+    "invalid_value": 1,
+    "source_only": 2,
+    "target_only": 1
+  },
+  "inputs": {
+    "contract": {
+      "bytes": 730,
+      "file": "contract.json",
+      "sha256": "e8df6e39f9be625b3330c03b3658dc0e72f3727f235372c7e5f7570e27048a58"
+    },
+    "source": {
+      "bytes": 49082,
+      "file": "source.csv",
+      "sha256": "d048048497100e1cf1562865dfd5147c5520ee2ffb8498eb19d2ec6603d28484"
+    },
+    "target": {
+      "bytes": 49105,
+      "file": "target.csv",
+      "sha256": "f4d961c0d84a7a83cb81be8d1a297bdd917daa66f01cf2863bcb6ed707d4418a"
+    }
+  },
+  "passed": false,
+  "quality_gates": {
+    "max_changed_rows": {
+      "limit": 0,
+      "observed": 3,
+      "passed": false
+    },
+    "max_duplicate_rows": {
+      "limit": 0,
+      "observed": 4,
+      "passed": false
+    },
+    "max_invalid_key_rows": {
+      "limit": 0,
+      "observed": 1,
+      "passed": false
+    },
+    "max_invalid_value_rows": {
+      "limit": 0,
+      "observed": 1,
+      "passed": false
+    },
+    "max_unmatched_rows": {
+      "limit": 0,
+      "observed": 6,
+      "passed": false
+    }
+  },
+  "report_schema": "1.0",
+  "row_classification_precedence": [
+    "invalid_key",
+    "duplicate_key",
+    "invalid_value",
+    "eligible"
+  ],
+  "run_id": "f5fd38a46d15a713dbf6",
+  "source": {
+    "duplicate_groups": 1,
+    "duplicate_key_rows": 2,
+    "eligible_rows": 999,
+    "invalid_cast_cells": 0,
+    "invalid_key_rows": 0,
+    "invalid_value_rows": 0,
+    "raw_rows": 1001
+  },
+  "target": {
+    "duplicate_groups": 1,
+    "duplicate_key_rows": 2,
+    "eligible_rows": 997,
+    "invalid_cast_cells": 1,
+    "invalid_key_rows": 1,
+    "invalid_value_rows": 1,
+    "raw_rows": 1001
+  }
+}

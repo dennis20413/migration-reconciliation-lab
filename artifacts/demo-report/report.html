@@ -1,0 +1,122 @@
+<!doctype html><html lang='en'><meta charset='utf-8'><title>Migration reconciliation audit</title>
+<style>body{font:16px system-ui;max-width:1180px;margin:40px auto;padding:0 24px;color:#16324a}pre{background:#edf3f6;padding:20px;overflow:auto}table{border-collapse:collapse;font-size:13px}th,td{border:1px solid #ccd6df;padding:8px;text-align:left;overflow-wrap:anywhere}h1{font-size:30px}.pass{color:#147344}.fail{color:#b52929}</style>
+<h1>Migration reconciliation audit</h1>
+<p class=fail><strong>DATA QUALITY FAILURE</strong> · Run f5fd38a46d15a713dbf6</p>
+<p>Independent synthetic-data portfolio project. Report is deterministic for the same inputs and settings.</p>
+<h2>Accounting and quality gates</h2><pre>{
+  &quot;accounting_invariants_passed&quot;: true,
+  &quot;comparison&quot;: {
+    &quot;changed_rows&quot;: 3,
+    &quot;field_differences&quot;: 3,
+    &quot;matched_clean_rows&quot;: 992,
+    &quot;matched_rows&quot;: 995,
+    &quot;source_blocked_rows&quot;: 2,
+    &quot;source_only_rows&quot;: 2,
+    &quot;target_blocked_rows&quot;: 1,
+    &quot;target_only_rows&quot;: 1
+  },
+  &quot;engine&quot;: {
+    &quot;memory_limit&quot;: &quot;256MB&quot;,
+    &quot;name&quot;: &quot;duckdb&quot;,
+    &quot;threads&quot;: 1,
+    &quot;version&quot;: &quot;1.5.6&quot;
+  },
+  &quot;exception_counts&quot;: {
+    &quot;blocked_by_quarantine&quot;: 3,
+    &quot;duplicate_key&quot;: 4,
+    &quot;field_difference&quot;: 3,
+    &quot;invalid_key&quot;: 1,
+    &quot;invalid_value&quot;: 1,
+    &quot;source_only&quot;: 2,
+    &quot;target_only&quot;: 1
+  },
+  &quot;inputs&quot;: {
+    &quot;contract&quot;: {
+      &quot;bytes&quot;: 730,
+      &quot;file&quot;: &quot;contract.json&quot;,
+      &quot;sha256&quot;: &quot;e8df6e39f9be625b3330c03b3658dc0e72f3727f235372c7e5f7570e27048a58&quot;
+    },
+    &quot;source&quot;: {
+      &quot;bytes&quot;: 49082,
+      &quot;file&quot;: &quot;source.csv&quot;,
+      &quot;sha256&quot;: &quot;d048048497100e1cf1562865dfd5147c5520ee2ffb8498eb19d2ec6603d28484&quot;
+    },
+    &quot;target&quot;: {
+      &quot;bytes&quot;: 49105,
+      &quot;file&quot;: &quot;target.csv&quot;,
+      &quot;sha256&quot;: &quot;f4d961c0d84a7a83cb81be8d1a297bdd917daa66f01cf2863bcb6ed707d4418a&quot;
+    }
+  },
+  &quot;passed&quot;: false,
+  &quot;quality_gates&quot;: {
+    &quot;max_changed_rows&quot;: {
+      &quot;limit&quot;: 0,
+      &quot;observed&quot;: 3,
+      &quot;passed&quot;: false
+    },
+    &quot;max_duplicate_rows&quot;: {
+      &quot;limit&quot;: 0,
+      &quot;observed&quot;: 4,
+      &quot;passed&quot;: false
+    },
+    &quot;max_invalid_key_rows&quot;: {
+      &quot;limit&quot;: 0,
+      &quot;observed&quot;: 1,
+      &quot;passed&quot;: false
+    },
+    &quot;max_invalid_value_rows&quot;: {
+      &quot;limit&quot;: 0,
+      &quot;observed&quot;: 1,
+      &quot;passed&quot;: false
+    },
+    &quot;max_unmatched_rows&quot;: {
+      &quot;limit&quot;: 0,
+      &quot;observed&quot;: 6,
+      &quot;passed&quot;: false
+    }
+  },
+  &quot;report_schema&quot;: &quot;1.0&quot;,
+  &quot;row_classification_precedence&quot;: [
+    &quot;invalid_key&quot;,
+    &quot;duplicate_key&quot;,
+    &quot;invalid_value&quot;,
+    &quot;eligible&quot;
+  ],
+  &quot;run_id&quot;: &quot;f5fd38a46d15a713dbf6&quot;,
+  &quot;source&quot;: {
+    &quot;duplicate_groups&quot;: 1,
+    &quot;duplicate_key_rows&quot;: 2,
+    &quot;eligible_rows&quot;: 999,
+    &quot;invalid_cast_cells&quot;: 0,
+    &quot;invalid_key_rows&quot;: 0,
+    &quot;invalid_value_rows&quot;: 0,
+    &quot;raw_rows&quot;: 1001
+  },
+  &quot;target&quot;: {
+    &quot;duplicate_groups&quot;: 1,
+    &quot;duplicate_key_rows&quot;: 2,
+    &quot;eligible_rows&quot;: 997,
+    &quot;invalid_cast_cells&quot;: 1,
+    &quot;invalid_key_rows&quot;: 1,
+    &quot;invalid_value_rows&quot;: 1,
+    &quot;raw_rows&quot;: 1001
+  }
+}</pre>
+<h2>Exception preview</h2><p>First 50 exceptions. Full results: exceptions.csv. Cell errors and row categories are separate counts.</p>
+<table><tr><th>Category</th><th>Side</th><th>Row</th><th>Key</th><th>Field</th><th>Source</th><th>Target</th><th>Detail</th></tr>
+<tr><td>blocked_by_quarantine</td><td>source</td><td>5</td><td>{&quot;company_code&quot;:&quot;C001&quot;,&quot;invoice_id&quot;:&quot;00000005&quot;}</td><td></td><td></td><td></td><td>Opposing key exists but is quarantined</td></tr>
+<tr><td>blocked_by_quarantine</td><td>source</td><td>6</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000006&quot;}</td><td></td><td></td><td></td><td>Opposing key exists but is quarantined</td></tr>
+<tr><td>blocked_by_quarantine</td><td>target</td><td>8</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000008&quot;}</td><td></td><td></td><td></td><td>Opposing key exists but is quarantined</td></tr>
+<tr><td>duplicate_key</td><td>source</td><td>8</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000008&quot;}</td><td></td><td></td><td></td><td>All rows with an ambiguous key are quarantined</td></tr>
+<tr><td>duplicate_key</td><td>source</td><td>9</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000008&quot;}</td><td></td><td></td><td></td><td>All rows with an ambiguous key are quarantined</td></tr>
+<tr><td>duplicate_key</td><td>target</td><td>4</td><td>{&quot;company_code&quot;:&quot;C001&quot;,&quot;invoice_id&quot;:&quot;00000005&quot;}</td><td></td><td></td><td></td><td>All rows with an ambiguous key are quarantined</td></tr>
+<tr><td>duplicate_key</td><td>target</td><td>5</td><td>{&quot;company_code&quot;:&quot;C001&quot;,&quot;invoice_id&quot;:&quot;00000005&quot;}</td><td></td><td></td><td></td><td>All rows with an ambiguous key are quarantined</td></tr>
+<tr><td>field_difference</td><td>both</td><td>3</td><td>{&quot;company_code&quot;:&quot;C001&quot;,&quot;invoice_id&quot;:&quot;00000003&quot;}</td><td>amount</td><td>101.11</td><td>101.13</td><td>Canonical values differ beyond declared tolerance</td></tr>
+<tr><td>field_difference</td><td>both</td><td>4</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000004&quot;}</td><td>customer_name</td><td>Synthetic Customer 004</td><td>&lt;script&gt;alert(&quot;synthetic&quot;)&lt;/script&gt;</td><td>Canonical values differ beyond declared tolerance</td></tr>
+<tr><td>field_difference</td><td>both</td><td>13</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000012&quot;}</td><td>amount</td><td>104.44</td><td>104.46</td><td>Canonical values differ beyond declared tolerance</td></tr>
+<tr><td>invalid_key</td><td>target</td><td>7</td><td>{&quot;company_code&quot;:&quot;C001&quot;,&quot;invoice_id&quot;:null}</td><td></td><td></td><td></td><td>Null or blank composite key component</td></tr>
+<tr><td>invalid_value</td><td>target</td><td>6</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000006&quot;}</td><td>amount</td><td></td><td>NOT_A_DECIMAL</td><td>Malformed, out-of-range, or excess-scale decimal; row excluded from comparison</td></tr>
+<tr><td>source_only</td><td>source</td><td>2</td><td>{&quot;company_code&quot;:&quot;C002&quot;,&quot;invoice_id&quot;:&quot;00000002&quot;}</td><td></td><td></td><td></td><td>No comparable opposing key</td></tr>
+<tr><td>source_only</td><td>source</td><td>7</td><td>{&quot;company_code&quot;:&quot;C001&quot;,&quot;invoice_id&quot;:&quot;00000007&quot;}</td><td></td><td></td><td></td><td>No comparable opposing key</td></tr>
+<tr><td>target_only</td><td>target</td><td>1001</td><td>{&quot;company_code&quot;:&quot;C001&quot;,&quot;invoice_id&quot;:&quot;00001001&quot;}</td><td></td><td></td><td></td><td>No comparable opposing key</td></tr>
+</table></html>

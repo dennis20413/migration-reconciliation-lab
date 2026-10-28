@@ -1,0 +1,11 @@
+{
+  "name": "Independent synthetic invoice migration",
+  "keys": {"columns": ["company_code", "invoice_id"], "trim": true, "case": "upper"},
+  "null_tokens": ["", "NULL", "N/A"],
+  "fields": [
+    {"name": "customer_name", "type": "string", "trim": true},
+    {"name": "amount", "type": "decimal", "scale": 2, "tolerance": "0.01"},
+    {"name": "currency", "type": "string", "trim": true}
+  ],
+  "gates": {"max_invalid_key_rows": 0, "max_duplicate_rows": 0, "max_invalid_value_rows": 0, "max_unmatched_rows": 0, "max_changed_rows": 0}
+}
